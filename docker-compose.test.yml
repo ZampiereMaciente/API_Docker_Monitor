@@ -1,0 +1,47 @@
+services:
+
+  # ====================================
+  # DATABASE CONNECTION FAILURE
+  # ====================================
+  app-db-failure:
+    image: alpine:latest
+    container_name: app-db-failure
+    command: >
+      sh -c "
+      echo 'ERROR: could not connect to server';
+      echo 'connection refused';
+      sleep 3600
+      "
+
+  # ====================================
+  # CRASH LOOP
+  # ====================================
+  app-crash-loop:
+    image: alpine:latest
+    container_name: app-crash-loop
+    restart: always
+    command: >
+      sh -c "
+      echo 'Application starting';
+      echo 'Fatal error';
+      exit 1
+      "
+
+  # ====================================
+  # OUT OF MEMORY
+  # ====================================
+  app-oom:
+    image: python:3.12-alpine
+    container_name: app-oom
+    mem_limit: 64m
+    command: 
+      - "sh"
+      - "-c"
+      - |
+        echo "Starting memory stress test..."
+        python3 -c "
+        import sys
+        print('ERROR: out of memory exception')
+        print('Allocating large memory block...')
+        sys.exit(1)
+        " || echo "Application crashed - out of memory"
