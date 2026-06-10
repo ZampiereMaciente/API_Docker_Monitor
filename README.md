@@ -4,6 +4,11 @@
 
 Este projeto conecta-se diretamente ao socket do Docker do host (`/var/run/docker.sock`) para fornecer telemetria em tempo real, visualização de logs e **Análise Inteligente de Erros** diretamente no seu navegador.
 
+<p align="center">
+  <img width="1387" height="780" alt="Screenshot from 2026-06-10 11-56-56" src="https://github.com/user-attachments/assets/3341b5a6-bd7e-4448-9a03-d5790898dee2" />
+</p>
+
+
 ---
 
 ## ✨ Funcionalidades Principais
